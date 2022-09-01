@@ -7,3 +7,14 @@ const user = {
   age: 42,
   email: 'john@doe.com',
 };
+
+const userProxy = new Proxy(user, {
+  get: (target, property) => {
+    console.log(
+      `${new Date()} | The value of ${property}} is ${Reflect.get(
+        target,
+        property
+      )}`
+    );
+  },
+});
